@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <section class="match__sender col-10">
+    <section class="match__sender col-10 col-xs-12">
       <p>Вы можете подписаться на все матчи, открываемые по этому адресу и не пропустить свободные места. Вы будете получать информацию о каждом матче сразу после открытия регистрации на него.</p>
       <q-form  @submit="onSubmit">
         <q-input
@@ -57,10 +57,20 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-.match__sender
-  margin: 30px auto 0
-  border-top: 2px dashed $primary
-  p
-    padding: 10px
+<style lang="stylus">
+  .match__sender
+    margin: 50px auto 0
+    border-top: 2px dashed $darkgreen
+    color: $darkgreen
+    p
+      padding: 10px
+      width: 100%
+  .match__sender .q-field__label
+    color: $darkgreen
+  .match__sender .q-field__control-container .q-field__label
+    color: $darkgreen
+    font-size: $font-size-h3
+    min-height: 30px
+  .match__sender .q-field--standard .q-field__control:after
+    color: $darkgreen
 </style>

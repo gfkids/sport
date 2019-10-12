@@ -2,7 +2,6 @@
   <section class="team">
     <booked :match="match" :team="1" v-if="bookedAlert"></booked>
     <p>Команда № 1</p>
-    <p>В команде 5 игроков</p>
     <ol>
       <li v-for="player in registeredPlayersArray" :key="player.tel">
         <span>{{ player.name }} / </span>
@@ -10,7 +9,7 @@
         <span>{{ player.age }}</span>
       </li>
     </ol>
-    <p v-if="freePlaces">Свободных мест: {{ freePlaces }}</p>
+    <p v-if="freePlaces" class="team__freePlaces">Свободных мест:  <span>{{ freePlaces }}</span></p>
     <p v-if="freePlaces <= null">Все места в этой команде забронированы.</p>
     <q-form v-if="btnBooked"
       @submit="onSubmit"
@@ -21,9 +20,11 @@
         v-model="pseudo"
         label="Имя *"
         lazy-rules
+        dark
         :rules="nameRules"
       />
       <q-input
+        dark
         filled
         type="number"
         v-model="tel"
@@ -32,6 +33,7 @@
         :rules="telephoneRules"
       />
       <q-input
+        dark
         filled
         type="email"
         :rules="emailRules"
@@ -78,13 +80,13 @@
                 v-model="accept"
                 >
                   <!-- <div slot="label"> -->
-                    <router-link to="/"
+                    <router-link to="/terms"
                        class="header__top-link"
                        >
                     Принимаю условия пользовательского соглашения
                     </router-link>
                  <!-- </div> -->
-               </q-toggle>
+      </q-toggle>
       <q-btn color="primary"
              class="btn"
              type="submit"
@@ -92,9 +94,9 @@
              v-if="btnBooked && freePlaces && globalBtns"
               />
     </q-form>
-    <q-btn color="primary"
+    <q-btn
            @click="openForm"
-           class="btn"
+           class="btn__takePart"
            label="Участвовать"
            v-if="btnForm && freePlaces > null && globalBtns" />
   </section>
@@ -216,5 +218,14 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
+<style lang="stylus">
+  .team__freePlaces span
+    font-size: $font-size-h1
+    font-weight: bold
+    color: $secondary
+  .btn__takePart
+    background: $primary
+    margin: auto auto 0
+    width: 70%
+    color: #fff
 </style>

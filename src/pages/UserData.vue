@@ -88,7 +88,10 @@ export default {
     //   this.$store.dispatch('module1/globalBtnsDisable')
     // }
     // let nextDate = Date(expirationDate).toString()
-    this.nextDay = new Date(expirationDate)
+    if (expirationDate) {
+      this.nextDay = new Date(expirationDate)
+    }
+
     // let expirationDate = Date.now() + (1000 * 60 * 60 * 24)
     // let test = new Date(expirationDate)
     // console.log(test)

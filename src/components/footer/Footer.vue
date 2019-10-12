@@ -7,6 +7,8 @@
            >
           InCitySport
         </router-link>
+        <div class="header__logo-icon">
+        </div>
       </div>
       <p>Cooperative sport</p>
     </div>
@@ -17,7 +19,7 @@
 
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
   .footer
     display: flex
     position: relative
@@ -41,13 +43,19 @@
       font-weight: 400
       margin: auto
   .footer__logo
+    max-width: 167px
+    position: relative
     display: flex
-    width: 50px
     cursor: pointer
     p
       margin: auto
       font-style: italic
       font-size: $font-size-h4
       text-align: center
+  .header__logo-icon
+    width: 30px
+    background: url('../../statics/icons/ball.svg') no-repeat
+    background-size: 20px
+    background-position: 10px 3px
 
 </style>

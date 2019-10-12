@@ -2,7 +2,6 @@
   <section class="team">
     <booked :match="match" :team="3" v-if="bookedAlert"></booked>
     <p>Команда № 3</p>
-    <p>В команде 5 игроков</p>
     <ol>
       <li v-for="player in registeredPlayersArray" :key="player.tel">
         <span>{{ player.name }} / </span>
@@ -10,7 +9,7 @@
         <span>{{ player.age }}</span>
       </li>
     </ol>
-    <p v-if="freePlaces">Свободных мест: {{ freePlaces }}</p>
+    <p v-if="freePlaces" class="team__freePlaces">Свободных мест:   <span>{{ freePlaces }}</span></p>
     <p v-if="freePlaces <= null">Все места в этой команде забронированы.</p>
     <q-form v-if="btnBooked"
       @submit="onSubmit"
@@ -94,7 +93,7 @@
     </q-form>
     <q-btn color="primary"
            @click="openForm"
-           class="btn team-btn"
+           class="btn__takePart"
            label="Участвовать"
            v-if="btnForm && freePlaces > null && globalBtns" />
   </section>
@@ -217,8 +216,5 @@ export default {
 </script>
 
 <style lang="stylus">
-  .team
-    min-height: 400px
-  .team-btn
-    margin-top: auto
+
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh Lpr fFf"  class="shadow-2 rounded-borders">
     <q-header elevated class="header row">
       <section class="header-container col-11">
         <q-toolbar>
@@ -26,23 +26,34 @@
           <div class="header__logo-icon">
           </div>
         </div>
-        <div class="header__rules">
+        <!-- <div class="header__rules">
           <router-link to="/rules"
              tag="p"
              >
             Правила
           </router-link>
-        </div>
+        </div> -->
       </section>
     </q-header>
 
     <q-drawer
+      behavior="mobile"
       v-model="leftDrawerOpen"
-      show-if-above
-      bordered
       content-class="bg-grey-2"
     >
       <q-list>
+        <q-item clickable>
+          <q-item-section avatar>
+            <q-icon name="home" />
+          </q-item-section>
+          <q-item-section>
+            <router-link to="/"
+               tag="p"
+               >
+              Главная
+            </router-link>
+          </q-item-section>
+        </q-item>
         <q-item clickable>
           <q-item-section avatar>
             <q-icon name="priority_high" />
@@ -77,14 +88,16 @@
                  >
                 Контакты
               </router-link>
-            <q-item-label caption>incitysport@gmail.com</q-item-label>
+            <!-- <q-item-label caption>incitysport@gmail.com</q-item-label> -->
           </q-item-section>
         </q-item>
       </q-list>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <q-page padding>
+        <router-view />
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
@@ -107,7 +120,8 @@ export default {
 
 <style lang="stylus">
   .header
-    background: $primary
+    background: #fff
+    color: $primary
   .header-container
     max-width: 1100px
     display: flex
@@ -125,10 +139,14 @@ export default {
     position: relative
     display: flex
     width: 30%
+    @media (max-width $breakpoint-xs-max)
+      width: 50%
     margin: 0
     cursor: pointer
     p
       margin: auto
+      font-size: $font-size-h4
+      font-family: Arial,Helvetica Neue,Helvetica,sans-serif
   .header__logo p
     font-style: italic
     font-size: $font-size-h2
@@ -137,7 +155,16 @@ export default {
     text-align: right
     padding-right: 5px
   .q-toolbar
-    max-width: 30%
+    max-width: 120px
+  .q-toolbar__title
+    font-size: $font-size-h4
+    font-family: Arial,Helvetica Neue,Helvetica,sans-serif
   .q-toolbar:hover .q-btn
     box-shadow: 0 0 1px 2px #fff
+  .q-item__section p
+    margin-bottom: 0
+    color: $primary
+    font-size: $font-size-h4
+  .q-layout-padding
+    padding: 0
 </style>

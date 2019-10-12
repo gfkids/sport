@@ -13,6 +13,8 @@
           :options="unique(selector.getter)"
           :label="selector.name"
           clearable
+          dark
+          bg-color="transparent"
         >
           <template v-if="selector.value" v-slot:append>
             <q-icon name="cancel" @click.stop="selector.value = null" class="cursor-pointer" />
@@ -23,12 +25,13 @@
     <section>
 
     </section>
-    <section v-if="filterActivated">
+    <section v-if="filterActivated" class="matches">
+      <h2>Открытые матчи для регистрации</h2>
       <div
                v-for="match in filteredMatches"
                :key="match.id"
-               class="matches col-11 row main__container">
-        <div class="match match_id row ">
+               class="match__wrapper row">
+        <div class="match match_id row match__container col-11">
           <div class="match__data">
             <p>{{ match.sport }}</p>
             <p>{{ match.city }}</p>
@@ -37,10 +40,12 @@
             <p>{{ match.time }}</p>
           </div>
           <div class="row">
-            <section class="match__description col-md-10 col-sm-10 col-xs-11" >
+            <section class="match__description col-md-10 col-sm-10 col-xs-12" >
               <h3>Описание матча</h3>
               <!-- <p>Услуги сервиса InCitySport бесплатные.</p> -->
               <p>Оплата игроками за аренду зала производится администратору зала непосредственно перед матчем. Оплату равномерно рассчитывают сами игроки исходя из количества игроков и цены аренды зала. Для данного матча цена участия для одного игрока составит <strong>от 30-ти до 60-ти рублей</strong>.</p>
+              <p>В каждой команде 5 игроков.</p>
+
             </section>
           </div>
           <section class="teams">
@@ -125,19 +130,62 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-  .main__container
+<style lang="stylus">
+  .main
+    background: #fff
+  .filters
+    padding: 10px 0
+    color: $darkgreen
+    width: 100%
+    background: linear-gradient(to right top, lighten($primary, 20%), lighten($primary, 60%), lighten($secondary, 60%))
+    background: linear-gradient(to right bottom, $lightgreen, $green)
+    background-size: cover
+    @media (max-width $breakpoint-xs-max)
+      background: #fff
+    h3
+      font-weight: bold
+      font-size: $font-size-h3
+      font-family: Arial,Helvetica Neue,Helvetica,sans-serif
+      text-transform: uppercase
+  .filters__container
+    background: lighten($primary, 90%)
+    background: #fff
+    background: linear-gradient(to right bottom, $green, $darkgreen)
+    padding: 10px 20px 30px
+    box-shadow: -20px 30px 80px 0px grey
+    color: #fff
+    margin: 0 auto 20px
+    width: 400px
+    @media (max-width $breakpoint-xs-max)
+      width: 80%
+  .matches
+    border-top: 2px solid $primary
+    h2
+      font-weight: bold
+      font-size: $font-size-h3
+      font-family: Arial,Helvetica Neue,Helvetica,sans-serif
+      text-transform: uppercase
+      color: $darkgreen
+      margin: 50px auto 0
+  .match__wrapper
+    width: 100%
+    background: linear-gradient(to bottom, $green 0% 10%, $darkgreen 10% 30%, $green 30% 50%, $darkgreen 50% 70%, $green 70% 90%, $darkgreen 90% 100%)
+    background: linear-gradient(to right bottom, $lightgreen, $green)
+    margin: 50px auto 0
+  .match__container
+    padding-top: 20px
     max-width: 1100px
     margin: 0 auto
     h3
-      color: $primary
       margin: 20px auto 0
   .match
-    border: 1px solid $color-main
-    margin-bottom: 70px
+    margin-bottom: 10px
     padding: 10px
+    @media (max-width $breakpoint-xs-max)
+      padding: 10px 0
   .match__description
     margin: 0 auto 30px
+    color: $darkgreen
   .match__data
     width: 100%
     display: flex
@@ -148,36 +196,54 @@ export default {
       display: flex
       margin: auto
       font-weight: bold
-      height: 40px
+      color: $darkgreen
+      min-height: 40px
       justify-content: center
       text-align: center
       align-self: center
       align-items: center
       width: 15%
-      min-width: 130px
+      @media (max-width $breakpoint-xs-max)
+        width: 30%
   .teams
     width: 100%
     display: flex
     justify-content: space-between
-  .filters
-    color: $primary
-    width: 100%
-    background: linear-gradient(to right, lighten(#fff, 0%), lighten(#fff, 0%))
-    background-size: cover
-  .filters__container
-    color: #fff
-    margin: 0px auto 40px
-    width: 50%
-  .q-field__label
-    color: #fff
+    @media (max-width $breakpoint-xs-max)
+      flex-direction: column
   .team
     width: 30%
+    @media (max-width $breakpoint-xs-max)
+      width: 90%
+      margin: 0 auto 20px
+      box-shadow: none
+      padding: 10px 0
+    display: flex
+    flex-direction: column
+    background: linear-gradient(to right bottom, $green, $darkgreen)
+    padding: 10px
+    min-height: 100px
+    box-shadow: -20px 30px 80px 0px grey
+    ol
+      color: #fff
+      border-bottom: 1px solid #fff
+      border-top: 1px solid #fff
+      padding: 15px auto
+      @media (max-width $breakpoint-xs-max)
+        padding-left: 30px
+      li
+        padding-top: 5px
+    p, h6, a
+      text-align: center
+      color: #fff
   .btn
     display: flex
     margin: 10px auto
-  .match__sender
-    margin: 30px auto 0
-    border-top: 2px dashed $primary
-    p
-      padding: 10px
+  .q-form .q-field__label
+    color: #fff
+    font-size: $font-size-h3
+    min-height: 30px
+  .q-field--standard .q-field__control:after
+    color: #fff
+
 </style>

@@ -10,8 +10,9 @@
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
 
-$primary   = #21BA45
-$secondary = #26A69A
+$primary   = $green
+$primary-light  = lighten(#21BA45, 20%)
+$secondary = #f91
 $accent    = #9C27B0
 
 $positive  = #027BE3
@@ -56,7 +57,7 @@ $col-12 = $col*12 - $gap
 
 $font-load = 'Comfortaa','Verdana', sans-serif
 $font-heading = -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
-$font-base = -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif
+$font-base = -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans,Arial, Helvetica Neue, sans-serif
 
 $font-size-base = 1rem
 $line-height-base = 1.618rem
@@ -176,15 +177,15 @@ p
   width: 100%
 .btn
   display: block
-  height: 50px
   font-size: $font-size-h6
+  font-weight: bold
   text-align: center
   min-width: 50%
   max-width: 500px
-  background-color: $color-dark
+  background-color: $color-main
   border-radius: 5px
   color: #fff
-  padding: 5px 10px
+  padding: 15px
   text-transform: uppercase
   margin: 20px auto 10px auto
   &:hover
