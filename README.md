@@ -1,4 +1,4 @@
-# cs (cs)
+# cs (sport)
 
 A Quasar Framework app
 

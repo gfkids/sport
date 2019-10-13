@@ -23,6 +23,5 @@ git commit -m 'deploy'
 git push -f git@github.com:gfkids/sport.git master:gh-pages
 
 cd -
-
 # Сразу отправить папку dist в gh-pages
 # git subtree push --prefix dist origin gh-pages
